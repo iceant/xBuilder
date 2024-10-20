@@ -9,3 +9,5 @@ BEGIN
     END
     MENUITEM "&About", CM_ABOUT
 END
+
+Icon ICON "../../Resources/puzzle-piece.ico"

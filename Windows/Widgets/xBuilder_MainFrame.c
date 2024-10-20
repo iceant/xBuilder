@@ -31,7 +31,8 @@ BOOL xBuilder_MainFrame_Register(HINSTANCE hInstance){
     WndClass.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS;
     WndClass.lpfnWndProc = WndProc;
     WndClass.hInstance = hInstance;
-    WndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+//    WndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+    WndClass.hIcon = LoadIcon(hInstance, "Icon");
     WndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
     WndClass.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
 //    WndClass.lpszMenuName = MAKEINTRESOURCE(xBuilder_MainFrame_Menu);
