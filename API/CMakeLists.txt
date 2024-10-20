@@ -18,7 +18,7 @@ endforeach ()
 ########################################################################################################################
 ## SDK
 if(NOT TARGET SDK)
-    add_subdirectory(../SDK ${CMAKE_CURRENT_SOURCE_DIR}/SDK)
+    add_subdirectory(../SDK ${CMAKE_CURRENT_BINARY_DIR}/SDK)
 endif ()
 target_link_libraries(${PROJECT_NAME} PUBLIC SDK)
 

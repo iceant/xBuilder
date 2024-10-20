@@ -1,20 +1,21 @@
 #include <xBuilder_MainFrame.h>
 #include <windowsx.h>
-#include <xBuilder_MainFrame_OnDestroy.h>
+#include <xBuilder_MainFrame_RC.h>
 
 /* -------------------------------------------------------------------------------------------------------------- */
 /*  */
 
 #define XBUILDER_MAINFRAME_CLASSNAME "xBuilder_MainFrame"
 
-
-
 /* -------------------------------------------------------------------------------------------------------------- */
 /*  */
+#include <xBuilder_MainFrame_OnDestroy.hpp>
+#include <xBuilder_MainFrame_OnCommand.hpp>
 
 static LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam){
     switch (Message) {
         HANDLE_MSG(hwnd, WM_DESTROY, xBuilder_MainFrame_OnDestroy);
+        HANDLE_MSG(hwnd, WM_COMMAND, xBuilder_MainFrame_OnCommand);
         default:
             return DefWindowProc(hwnd, Message, wParam, lParam);
     }
@@ -33,7 +34,8 @@ BOOL xBuilder_MainFrame_Register(HINSTANCE hInstance){
     WndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
     WndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
     WndClass.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
-    WndClass.lpszMenuName = NULL;
+//    WndClass.lpszMenuName = MAKEINTRESOURCE(xBuilder_MainFrame_Menu);
+    WndClass.lpszMenuName = xBuilder_MainFrame_Menu;
     WndClass.lpszClassName = XBUILDER_MAINFRAME_CLASSNAME;
     return (RegisterClass(&WndClass)!=0)?TRUE:FALSE;
 }

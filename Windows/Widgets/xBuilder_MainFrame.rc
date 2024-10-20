@@ -1,0 +1,11 @@
+#include <windows.h>
+#include <xBuilder_MainFrame_RC.h>
+
+xBuilder_MainFrame_Menu MENU
+BEGIN
+    POPUP "&Project"
+    BEGIN
+        MENUITEM "New", CM_PROJECT_NEW
+    END
+    MENUITEM "&About", CM_ABOUT
+END

@@ -12,6 +12,10 @@
 #include <sdk_vector.h>
 #endif /*INCLUDED_SDK_VECTOR_H*/
 
+#ifndef INCLUDED_XAPI_ERRORS_H
+#include <xApi_Errors.h>
+#endif /*INCLUDED_XAPI_ERRORS_H*/
+
 
 /* -------------------------------------------------------------------------------------------------------------- */
 /*  */
@@ -152,5 +156,73 @@ typedef struct xApi_VariableType_S{
     } value;
 }xApi_VariableType_T;
 
+/* -------------------------------------------------------------------------------------------------------------- */
+/*  */
+
+/*
+ * OptionValue like Enum key=value
+ */
+typedef struct xApi_OptionValue_S{
+    char *      key;
+    sdk_int_t   value;
+}xApi_OptionValue_T;
+
+/*
+ * {
+ *      option_id: "NColor",
+ *      description: "Color",
+ *      values:[
+ *          {key:"BLACK", value=1},
+ *          {key:"WHITE", value=2},
+ *          {key:"GREY", value=3},
+ *          {key:"PINK", value=4},
+ *          {key:"WHITE_Pop_Art", value=5},
+ *      ]
+ * }
+ */
+
+typedef struct xApi_Option_S{
+    char * option_id;
+    char * description;
+    char *  value;
+    sdk_vector_t values; /* OptionValue[] */
+}xApi_Option_T;
+
+typedef struct xApi_Evaluator_S{
+    char* name;
+    sdk_bool_t (*evaluate)(void* arg);
+    void* arg;
+}xApi_Evaluator_T;
+
+typedef enum xApi_Part_State_Enum{
+    kxApi_Part_State_EXCLUDED = -1,
+    kxApi_Part_State_ENABLED = 0,
+    kxApi_Part_State_INCLUDED = 1,
+}xApi_Part_State_T;
+
+typedef struct xApi_Part_S{
+    int   type;
+    char* part_id;
+    char* description;
+    sdk_size_t  quantity;
+    sdk_vector_t sub_parts;
+    xApi_Part_State_T   state; /* -1:excluded, 0:enable, 1:included */
+    xApi_Evaluator_T* enable_evaluator;
+    xApi_Evaluator_T* include_evaluator;
+    xApi_Evaluator_T* exclude_evaluator;
+}xApi_Part_T;
+
+typedef struct xApi_BOM_S{
+    char* name;
+    char* description;
+    sdk_vector_t parts;
+}xApi_BOM_T;
+
+typedef struct xApi_Project_S{
+    char * name;
+    sdk_vector_t BOMs;
+    sdk_vector_t options;
+    sdk_vector_t evaluators;
+}xApi_Project_T;
 
 #endif /*INCLUDED_XAPI_TYPES_H*/

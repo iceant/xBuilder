@@ -15,8 +15,10 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${UI_TOOLKIT_DIR})
 ## WIDGETS
 set(WIDGET_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Widgets)
 file(GLOB WIDGET_SOURCES ${WIDGET_DIR}/*.c)
+file(GLOB WIDGET_RC_SOURCES ${WIDGET_DIR}/*.rc)
 target_sources(${PROJECT_NAME} PUBLIC ${WIDGET_SOURCES})
 target_include_directories(${PROJECT_NAME} PUBLIC ${WIDGET_DIR})
+target_sources(${PROJECT_NAME} PUBLIC ${WIDGET_RC_SOURCES})
 
 
 ########################################################################################################################
