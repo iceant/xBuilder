@@ -1,0 +1,20 @@
+#ifndef INCLUDED_XAPI_DEFINITIONS_H
+#define INCLUDED_XAPI_DEFINITIONS_H
+
+#ifndef xAPI_NAME_SIZE
+    #define xAPI_NAME_SIZE 32
+#endif
+
+#ifndef xAPI_DESCRIPTION_SIZE
+    #define xAPI_DESCRIPTION_SIZE 256
+#endif
+
+#ifndef xAPI_OPTION_VALUE_KEY_SIZE
+    #define xAPI_OPTION_VALUE_KEY_SIZE 64
+#endif
+
+#ifndef xAPI_OPTION_VALUE_VAL_SIZE
+    #define xAPI_OPTION_VALUE_VAL_SIZE 256
+#endif
+
+#endif /* INCLUDED_XAPI_DEFINITIONS_H */

@@ -1,0 +1,14 @@
+#ifndef INCLUDED_PROJECTVIEW_ONCREATE_HPP
+#define INCLUDED_PROJECTVIEW_ONCREATE_HPP
+
+#ifndef INCLUDED_WINDOWS_H
+#define INCLUDED_WINDOWS_H
+#include <windows.h>
+#endif /*INCLUDED_WINDOWS_H*/
+
+BOOL ProjectView_OnCreate(HWND hwnd, LPCREATESTRUCT pCreateStruct){
+    return TRUE;
+}
+
+
+#endif /* INCLUDED_PROJECTVIEW_ONCREATE_HPP */

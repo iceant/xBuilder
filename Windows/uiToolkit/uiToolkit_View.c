@@ -50,3 +50,17 @@ void uiToolkit_MoveWindowToScreenCenter(void* windowHandle){
     MoveWindow(windowHandle, point.x, point.y, windowPosition.right-windowPosition.left
         , windowPosition.bottom - windowPosition.top, TRUE);
 }
+
+void uiToolkit_FitParent(HWND hwnd, HWND parent){
+    RECT pRect;
+    RECT Rect;
+    
+    GetClientRect(parent, &pRect);
+    GetWindowRect(hwnd, &Rect);
+    
+    int width = pRect.right - pRect.left - 5;
+    int height = pRect.bottom - pRect.top - 5;
+    
+    SetWindowPos(hwnd, 0, 1, 1, width, height, SWP_SHOWWINDOW);
+    UpdateWindow(hwnd);
+}
